@@ -14,7 +14,6 @@
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-sql_2.12</artifactId>
 			<version>3.3.0</version>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -23,10 +22,14 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.0</version>
+					<version>3.8.1</version>
 					<configuration>
 						<source>${java.version}</source> <!-- same as <java.version> -->
 						<target>${java.version}</target> <!-- same as <java.version> -->
+						<compilerArgs>
+							<arg>--add-exports</arg>
+							<arg>java.base/sun.nio.ch=ALL-UNNAMED</arg>
+						</compilerArgs>
 					</configuration>
 				</plugin>
 			</plugins>
